@@ -21,10 +21,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: b-mtls-service
+  name: c-mtls-service
 spec:
   selector:
-    app: mtls-app-b
+    app: mtls-app-c
   ports:
   - protocol: TCP
     port: 5002
