@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c-mtl-deployement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mtls-app-c
+  template:
+    metadata:
+      labels:
+        app: mtls-app-c
+    spec:
+      containers:
+      - name: container-b
+        image: nmdineshkumar/servicec:latest
+        ports:
+        - containerPort: 5002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: b-mtls-service
+spec:
+  selector:
+    app: mtls-app-b
+  ports:
+  - protocol: TCP
+    port: 5002
+    targetPort: 5002
+  type: ClusterIP
