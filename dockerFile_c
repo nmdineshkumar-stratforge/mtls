@@ -1,0 +1,26 @@
+# Use Python 3.8 base image
+FROM python:3.8-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the service code
+COPY . /app/
+
+# Install dependencies
+RUN pip install Flask requests
+
+# Expose port
+EXPOSE 5002
+
+# Copy wait-for-it script into the container
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
+# Use the wait-for-it script to wait for service_a to be ready
+CMD /wait-for-it.sh service_b:5001 -- python service_c.py
+
+
+
+# Command to run the service
+# CMD ["python", "service_c.py"]

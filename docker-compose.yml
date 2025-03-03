@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  service_a:
+    build:
+      context: .
+      dockerfile: dockerFile_a
+    ports:
+      - "5000:5000"
+    networks:
+      - microservices-network
+
+  service_b:
+    build:
+      context: .
+      dockerfile: dockerFile_b
+    ports:
+      - "5001:5001"
+    networks:
+      - microservices-network
+
+  service_c:
+    build:
+      context: .
+      dockerfile: dockerFile_c
+    ports:
+      - "5002:5002"
+    depends_on:
+      - service_a
+      - service_b
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge
