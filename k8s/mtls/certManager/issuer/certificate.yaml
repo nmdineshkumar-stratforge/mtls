@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: my-istio-cert
+  namespace: default
+spec:
+  secretName: istio-ingressgateway-certificate
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+  commonName: default.svc.cluster.local
+  dnsNames:
+  - default.svc.cluster.local
+  - default.svc.cluster.local
+  - "*.default.svc.cluster.local"
+  # Optional: Set the duration of the certificate validity
+  duration: 2160h
+  renewBefore: 360h

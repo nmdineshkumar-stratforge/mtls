@@ -1,0 +1,32 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: servicea-pa
+spec:
+  selector:
+    matchLabels:
+      app: mtls-app
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeekubectlrAuthentication
+metadata:
+  name: serviceb-pa
+spec:
+  selector:
+    matchLabels:
+      app: mtls-app-b
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: servicec-pa
+spec:
+  selector:
+    matchLabels:
+      app: mtls-app-c
+  mtls:
+    mode: STRICT

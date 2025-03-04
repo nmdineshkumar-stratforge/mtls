@@ -7,12 +7,12 @@ app = Flask(__name__)
 def aggregate_data():
     try:
         # Call Service A
-        response_a = requests.get('http://service_a:5000/')
+        response_a = requests.get('http://my-mtls-service.default.svc.cluster.local:5000/')
         response_a.raise_for_status()  # Will raise an error for 4xx/5xx responses
         message_a = response_a.json().get("message", "No message from Service A")
 
         # Call Service B
-        response_b = requests.get('http://service_b:5001/greet?name=John')
+        response_b = requests.get('http://b-mtls-service.default.svc.cluster.local:5001/greet?name=John')
         response_b.raise_for_status()  # Will raise an error for 4xx/5xx responses
         message_b = response_b.json().get("message", "No message from Service B")
 

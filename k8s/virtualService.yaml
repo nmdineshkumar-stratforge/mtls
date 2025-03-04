@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-  - c-mtls-service.default.svc.cluster.local
+  - python.example.net
   gateways:
   - services-gateway
   http:
@@ -14,6 +14,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: c-mtls-service.default.svc.cluster.local
+        host: c-mtls-service
         port:
           number: 5002
