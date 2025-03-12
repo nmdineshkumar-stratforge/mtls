@@ -10,7 +10,7 @@ spec:
     mode: STRICT
 ---
 apiVersion: security.istio.io/v1beta1
-kind: PeekubectlrAuthentication
+kind: PeerAuthentication
 metadata:
   name: serviceb-pa
 spec:

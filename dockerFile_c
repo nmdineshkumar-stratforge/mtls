@@ -11,7 +11,7 @@ COPY . /app/
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
-RUN pip install Flask requests
+RUN pip install Flask requests loguru
 
 # Expose port
 EXPOSE 5002
